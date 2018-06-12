@@ -6,6 +6,7 @@ class CashRegister
   def initialize(discount = nil)
     @total = 0
     @items = []
+    @last_transaction = []
     @discount = discount
   end
 
@@ -14,6 +15,7 @@ class CashRegister
 
     quantity.times do
       @items << title
+      @last_transaction << price
     end
   end
 
@@ -31,6 +33,6 @@ class CashRegister
   end
 
   def void_last_transaction
-
+    @total = @total - last_transaction.pop
   end
 end
